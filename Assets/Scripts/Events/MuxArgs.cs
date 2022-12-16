@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MuxArgs : MonoBehaviour
+namespace Events
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public class MuxArgs : ProcessorArgs
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

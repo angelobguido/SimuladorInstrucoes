@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Events
 {
 
-    public class ProcessorArgs
+    public abstract class ProcessorArgs
     {
     
     }
