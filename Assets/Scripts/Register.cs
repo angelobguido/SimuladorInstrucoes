@@ -34,15 +34,15 @@ public class Register : MonoBehaviour
 
     private void OnEnable()
     {
-        Controller.OnSend += Receive;
+        Controller.OnSend += ReceiveControllerSignal;
     }
 
     private void OnDisable()
     {
-        Controller.OnSend -= Receive;
+        Controller.OnSend -= ReceiveControllerSignal;
     }
 
-    private void Receive(ProcessorArgs args)
+    private void ReceiveControllerSignal(ProcessorArgs args)
     {
         if (args is RegisterArgs)
         {
@@ -52,6 +52,9 @@ public class Register : MonoBehaviour
             }
         }
     }
-    
-    private void DoOperation(){}
+
+    private void DoOperation()
+    {
+        isEnabled = true;
+    }
 }
