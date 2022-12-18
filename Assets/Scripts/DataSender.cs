@@ -12,8 +12,9 @@ public class DataSender : MonoBehaviour
     {
         foreach (var path in pathsToSend)
         {
+            
             GameObject dataObject = Instantiate(dataClone, transform.position, Quaternion.identity);
-            dataObject.GetComponent<DataController>().LoadData(data, typeToSend, path, name);                        
+            dataObject.GetComponent<DataController>().LoadData(data, typeToSend, path, name);
         }
 
     }

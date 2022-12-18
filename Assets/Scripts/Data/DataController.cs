@@ -18,6 +18,11 @@ public class DataController : MonoBehaviour
         this.type = type;
         this.senderName = senderName;
         GetComponent<DataMovement>().SetCurrentPath(path);
+
+        if (data is InfoData)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

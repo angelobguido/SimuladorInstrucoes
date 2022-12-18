@@ -45,6 +45,9 @@ public class Mux : MonoBehaviour, DataReceiver
 
     private void ReceiveControllerSignal(ProcessorArgs args)
     {
+        
+        Reset();
+        
         if (args is MuxArgs)
         {
             if (type == ((MuxArgs)args).typeToSend)
@@ -52,6 +55,11 @@ public class Mux : MonoBehaviour, DataReceiver
                 receive = ((MuxArgs)args).typeToReceive;
             }
         }
+    }
+
+    private void Reset()
+    {
+        receive = DataType.Nothing;
     }
 
 }

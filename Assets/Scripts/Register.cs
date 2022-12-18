@@ -20,7 +20,7 @@ public enum RegisterType
     FR
 }
 
-public class Register : MonoBehaviour
+public class Register : MonoBehaviour, DataReceiver
 {
     [SerializeField] private RegisterType type;
     private DataSender dataSender;
@@ -37,6 +37,16 @@ public class Register : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("SendData", 0.1f, 0.5f);
+    }
+    
+    public void ReceiveData(Data data, DataType dataType)
+    {
+        if(isEnabled == false) return;
+        if (data is OperationData) return;
+
+        value = ((InfoData)data).info;
+        Debug.Log(value);
+
     }
 
     private void OnEnable()
@@ -58,6 +68,9 @@ public class Register : MonoBehaviour
 
     private void ReceiveControllerSignal(ProcessorArgs args)
     {
+        
+        Reset();
+        
         if (args is RegisterArgs)
         {
             if (type == ((RegisterArgs)args).typeToSend)
@@ -70,6 +83,11 @@ public class Register : MonoBehaviour
                 }
             }
         }
+    }
+    
+    private void Reset()
+    {
+        isEnabled = false;
     }
 
 }
