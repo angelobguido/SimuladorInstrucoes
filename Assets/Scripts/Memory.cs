@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Events;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Memory : MonoBehaviour
+public class Memory : MonoBehaviour, DataReceiver
 {
     
     [SerializeField] private Data[] dataList;
-    private int index;
+    private int currentIndex;
+    [SerializeField] private DataSender dataSender;
 
     private void Awake()
     {
-        index = 0;
+        currentIndex = 0;
     }
 
     private void OnEnable()
@@ -32,14 +34,19 @@ public class Memory : MonoBehaviour
             SendData();
         }
     }
-
+    
     private void SendData()
     {
-        
+        dataSender.SendData(dataList[currentIndex]);
     }
 
-    public void SetIndex(int index)
+    public void ReceiveData(Data data, DataType dataType)
     {
-        this.index = index;
+        if (data is InfoData)
+        {
+            currentIndex = ((InfoData)data).info;
+        }
     }
+    
+
 }

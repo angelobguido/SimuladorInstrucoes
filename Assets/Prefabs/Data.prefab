@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 626829382025264961}
   - component: {fileID: 5358278936145254287}
   - component: {fileID: 817568198254243180}
+  - component: {fileID: 4602274234705092639}
+  - component: {fileID: 1971614102570104442}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -98,3 +100,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &4602274234705092639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626898070939449294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b69f7fc721c314eb0f76a3cfee0b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1971614102570104442
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626898070939449294}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
