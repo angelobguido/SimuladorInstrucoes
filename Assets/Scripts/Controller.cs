@@ -4,38 +4,121 @@ using System.Collections.Generic;
 using Events;
 using UnityEngine;
 
+public enum State
+{
+    None,
+    Search,
+    Translation,
+    Execution
+}
+
 public class Controller : MonoBehaviour, DataReceiver
 {
 
     public static Action<ProcessorArgs> OnSend;
     private Data currentData;
-    
+    private bool loadIR = false;
+    private State currentState = State.None;
+
+    private void Start()
+    {
+        StartCoroutine(ChangeState());
+    }
+
     public void ReceiveData(Data data, DataType dataType)
     {
+        if (loadIR == false) return;
         if (currentData == data) return;
 
-        currentData = data;
-        
         if (data is OperationData)
         {
-            switch ( ((OperationData)data).operation )
-            {
-                
-                case OperationType.Noop: DoNoop();
-                    break;
-                default: break;
-            }
+
+            currentData = data;
+            StartCoroutine(ChangeState());
+            
         }
         
-        else if (data is InfoData)
+    }
+
+    private IEnumerator ChangeState()
+    {
+
+        yield return new WaitForSeconds(2);
+        
+        switch (currentState)
         {
+            case State.None:
+                currentState = State.Search; 
+                StartSearch();
+                break;
+            
+            case State.Search:
+                currentState = State.Translation;
+                StartTranslation();
+                break;
+            
+            case State.Translation:
+                currentState = State.Execution;
+                StartExecution();
+                break;
+            
+            case State.Execution:
+                currentState = State.Search;
+                StartSearch();
+                break;
+        }
+    }
+    
+    private void StartSearch()
+    {
+        OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
+        OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
+        loadIR = true;
+    }
+
+    private void StartTranslation()
+    {
+        loadIR = false;
+
+        switch ( ((OperationData)currentData).operation )
+        {
+            case OperationType.Noop: StartCoroutine(ChangeState());
+                break;
+            
+            case OperationType.Loadn:
+                DoLoadnTranslation();
+                StartCoroutine(ChangeState());
+                break;
+            
+            default: StartCoroutine(ChangeState());
+                break;
             
         }
     }
 
-    private void DoNoop()
+    private void StartExecution()
+    {
+        loadIR = false;
+        
+        switch ( ((OperationData)currentData).operation )
+        {
+            case OperationType.Noop: StartCoroutine(ChangeState());
+                break;
+            
+            case OperationType.Loadn: StartCoroutine(ChangeState());
+                break;
+            
+            default: StartCoroutine(ChangeState());
+                break;
+            
+        }
+    }
+
+    private void DoLoadnTranslation()
     {
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
         OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
+        OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));
+        OnSend?.Invoke(new RegisterArgs( ((OperationData)currentData).registers[0] , true, false));
     }
 }
