@@ -13,6 +13,7 @@ public class Mux : MonoBehaviour
 {
     [SerializeField] private MuxType type;
     [SerializeField] private DataType receive;
+    [SerializeField] private DataSender dataSender;
 
     private void OnEnable()
     {
@@ -22,6 +23,14 @@ public class Mux : MonoBehaviour
     private void OnDisable()
     {
         Controller.OnSend -= ReceiveControllerSignal;
+    }
+    
+    public void ReceiveData(Data data, DataType dataType)
+    {
+        if (dataType == receive)
+        {
+            dataSender.SendData(data);
+        }
     }
 
     private void ReceiveControllerSignal(ProcessorArgs args)

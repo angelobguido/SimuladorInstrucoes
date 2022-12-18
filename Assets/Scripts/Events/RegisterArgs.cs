@@ -9,9 +9,14 @@ namespace Events
     {
         
         public RegisterType typeToSend;
-        public RegisterArgs(RegisterType typeToSend)
+        public bool load;
+        public bool add;
+        
+        public RegisterArgs(RegisterType typeToSend, bool load, bool add)
         {
             this.typeToSend = typeToSend;
+            this.load = load;
+            this.add = add;
         }
         
     }

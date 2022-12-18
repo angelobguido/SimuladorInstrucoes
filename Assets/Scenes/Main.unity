@@ -486,6 +486,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mux1
       objectReference: {fileID: 0}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: pathsToSend.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1461265620}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1363590867}
     - target: {fileID: 7622245100612633919, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -699,6 +715,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Memory
       objectReference: {fileID: 0}
+    - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: dataList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: dataList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: df8f866187531d04ebb3d78212959259, type: 2}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: pathsToSend.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1363590867}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1755157077}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: pathsToSend.Array.data[0].waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 2146849865}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
 --- !u!1001 &581489416

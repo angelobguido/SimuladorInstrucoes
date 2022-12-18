@@ -48,13 +48,13 @@ public class Register : MonoBehaviour
         {
             if (type == ((RegisterArgs)args).typeToSend)
             {
-                DoOperation();
+                isEnabled = ((RegisterArgs)args).load;
+                if (((RegisterArgs)args).add)
+                {
+                    value++;
+                }
             }
         }
     }
 
-    private void DoOperation()
-    {
-        isEnabled = true;
-    }
 }

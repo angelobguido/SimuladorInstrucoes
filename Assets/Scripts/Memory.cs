@@ -17,22 +17,9 @@ public class Memory : MonoBehaviour, DataReceiver
         currentIndex = 0;
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        Controller.OnSend += ReceiveControllerSignal;
-    }
-
-    private void OnDisable()
-    {
-        Controller.OnSend -= ReceiveControllerSignal;
-    }
-
-    private void ReceiveControllerSignal(ProcessorArgs args)
-    {
-        if (args is MemoryArgs)
-        {
-            SendData();
-        }
+        InvokeRepeating("SendData", 0.1f, 0.5f);
     }
     
     private void SendData()
