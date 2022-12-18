@@ -19,7 +19,6 @@ public class ProcessorUnit : MonoBehaviour
             data.GetComponent<DataMovement>().SetCurrentPath(path);
         }
         
-
     }
 
     // Update is called once per frame
