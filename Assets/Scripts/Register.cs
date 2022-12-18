@@ -23,13 +23,20 @@ public enum RegisterType
 public class Register : MonoBehaviour
 {
     [SerializeField] private RegisterType type;
+    private DataSender dataSender;
     private int value;
     private bool isEnabled;
 
     private void Awake()
     {
+        dataSender = GetComponent<DataSender>();
         value = 0;
         isEnabled = false;
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("SendData", 0.1f, 0.5f);
     }
 
     private void OnEnable()
@@ -42,6 +49,13 @@ public class Register : MonoBehaviour
         Controller.OnSend -= ReceiveControllerSignal;
     }
 
+    private void SendData()
+    {
+        InfoData data = ScriptableObject.CreateInstance<InfoData>();
+        data.info = value;
+        dataSender.SendData(data);
+    }
+
     private void ReceiveControllerSignal(ProcessorArgs args)
     {
         if (args is RegisterArgs)
@@ -51,6 +65,7 @@ public class Register : MonoBehaviour
                 isEnabled = ((RegisterArgs)args).load;
                 if (((RegisterArgs)args).add)
                 {
+                    Debug.Log("Add");
                     value++;
                 }
             }

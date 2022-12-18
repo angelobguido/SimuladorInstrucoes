@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Events;
@@ -6,14 +7,23 @@ using UnityEngine;
 public enum MuxType
 {
     M1,
-    M2
+    M2,
+    M3,
+    M4,
+    M5,
+    M6
 }
 
-public class Mux : MonoBehaviour
+public class Mux : MonoBehaviour, DataReceiver
 {
     [SerializeField] private MuxType type;
     [SerializeField] private DataType receive;
-    [SerializeField] private DataSender dataSender;
+    private DataSender dataSender;
+
+    private void Awake()
+    {
+        dataSender = GetComponent<DataSender>();
+    }
 
     private void OnEnable()
     {

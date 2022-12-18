@@ -24,6 +24,12 @@ public class Memory : MonoBehaviour, DataReceiver
     
     private void SendData()
     {
+        if (currentIndex >= dataList.Length)
+        {
+            Debug.Log("End of program");
+            return;
+        }        
+        
         dataSender.SendData(dataList[currentIndex]);
     }
 

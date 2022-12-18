@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7fa1e778021dc4ca0c307d8b12e461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeToSend: 0
+  typeToSend: 2
   dataClone: {fileID: 8626898070939449294, guid: 47d8fcb27cc48394cb170397a7849556, type: 3}
   pathsToSend: []
 --- !u!61 &8272076814001179105

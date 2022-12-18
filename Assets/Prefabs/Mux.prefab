@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  receive: 0
+  receive: 2
 --- !u!114 &1368853651469189023
 MonoBehaviour:
   m_ObjectHideFlags: 0
