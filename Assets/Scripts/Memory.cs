@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Events;
@@ -6,8 +7,14 @@ using UnityEngine;
 public class Memory : MonoBehaviour
 {
     
-    [SerializeField] private int currentData;
-    
+    [SerializeField] private Data[] dataList;
+    private int index;
+
+    private void Awake()
+    {
+        index = 0;
+    }
+
     private void OnEnable()
     {
         Controller.OnSend += ReceiveControllerSignal;
@@ -29,5 +36,10 @@ public class Memory : MonoBehaviour
     private void SendData()
     {
         
+    }
+
+    public void SetIndex(int index)
+    {
+        this.index = index;
     }
 }

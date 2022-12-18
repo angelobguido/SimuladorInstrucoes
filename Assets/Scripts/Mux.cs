@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using Events;
 using UnityEngine;
 
-public enum DataType
-{
-    PC,
-    DATA_OUT
-}
-
 public enum MuxType
 {
     M1,
