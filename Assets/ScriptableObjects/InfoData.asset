@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aec24cb6fadd164080eacae818b4615, type: 3}
   m_Name: InfoData
   m_EditorClassIdentifier: 
-  info: 0
+  info: 20

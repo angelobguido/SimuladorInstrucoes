@@ -14,12 +14,12 @@ public class Memory : MonoBehaviour, DataReceiver
 
     private void Awake()
     {
-        currentIndex = 0;
+        currentIndex = 20;
     }
 
     private void Start()
     {
-        InvokeRepeating("SendData", 0.1f, 0.5f);
+        InvokeRepeating("SendData", 0.1f, 1.2f);
     }
     
     private void SendData()

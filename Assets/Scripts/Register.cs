@@ -69,8 +69,6 @@ public class Register : MonoBehaviour, DataReceiver
     private void ReceiveControllerSignal(ProcessorArgs args)
     {
         
-        Reset();
-        
         if (args is RegisterArgs)
         {
             if (type == ((RegisterArgs)args).typeToSend)

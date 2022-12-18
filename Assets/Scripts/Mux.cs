@@ -46,8 +46,6 @@ public class Mux : MonoBehaviour, DataReceiver
     private void ReceiveControllerSignal(ProcessorArgs args)
     {
         
-        Reset();
-        
         if (args is MuxArgs)
         {
             if (type == ((MuxArgs)args).typeToSend)

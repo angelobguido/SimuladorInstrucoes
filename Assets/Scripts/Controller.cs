@@ -34,7 +34,6 @@ public class Controller : MonoBehaviour, DataReceiver
         {
 
             currentData = data;
-            Debug.Log("Entered");
             StartCoroutine(ChangeState());
             
         }
@@ -43,8 +42,7 @@ public class Controller : MonoBehaviour, DataReceiver
 
     private IEnumerator ChangeState()
     {
-
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         
         switch (currentState)
         {
@@ -68,6 +66,8 @@ public class Controller : MonoBehaviour, DataReceiver
                 StartSearch();
                 break;
         }
+        
+        yield return new WaitForSeconds(2);
     }
     
     private void StartSearch()
@@ -79,8 +79,6 @@ public class Controller : MonoBehaviour, DataReceiver
 
     private void StartTranslation()
     {
-        Debug.Log("Translation");
-
         loadIR = false;
 
         switch ( ((OperationData)currentData).operation )
