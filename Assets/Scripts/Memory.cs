@@ -9,12 +9,14 @@ public class Memory : MonoBehaviour, DataReceiver
 {
     
     [SerializeField] private Data[] dataList;
-    private int currentIndex;
     [SerializeField] private DataSender dataSender;
-
+    private int currentIndex;
+    private DataDisplay display;
+    
     private void Awake()
     {
         currentIndex = 20;
+        display = GetComponent<DataDisplay>();
     }
 
     private void Start()
@@ -31,6 +33,7 @@ public class Memory : MonoBehaviour, DataReceiver
         }        
         
         dataSender.SendData(dataList[currentIndex]);
+        display.UpdateTextWithData(dataList[currentIndex]);
     }
 
     public void ReceiveData(Data data, DataType dataType)
