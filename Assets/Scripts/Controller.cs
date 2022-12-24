@@ -21,9 +21,19 @@ public class Controller : MonoBehaviour, DataReceiver
     private bool loadIR = false;
     private State currentState = State.None;
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(ChangeState());
+        Clock.OnClock += ReceiveClock;
+    }
+
+    private void OnDisable()
+    {
+        Clock.OnClock -= ReceiveClock;
+    }
+
+    private void ReceiveClock()
+    {
+        ChangeState();
     }
 
     public void ReceiveData(Data data, DataType dataType)
@@ -35,16 +45,13 @@ public class Controller : MonoBehaviour, DataReceiver
         {
 
             currentData = data;
-            StartCoroutine(ChangeState());
-            
+
         }
         
     }
 
-    private IEnumerator ChangeState()
+    private void ChangeState()
     {
-        yield return new WaitForSeconds(2);
-        
         switch (currentState)
         {
             case State.None:
@@ -68,7 +75,6 @@ public class Controller : MonoBehaviour, DataReceiver
                 break;
         }
         
-        yield return new WaitForSeconds(2);
     }
     
     private void StartSearch()
@@ -84,15 +90,14 @@ public class Controller : MonoBehaviour, DataReceiver
 
         switch ( ((OperationData)currentData).operation )
         {
-            case OperationType.Noop: StartCoroutine(ChangeState());
+            case OperationType.Noop: 
                 break;
             
             case OperationType.Loadn:
                 DoLoadnTranslation();
-                StartCoroutine(ChangeState());
                 break;
             
-            default: StartCoroutine(ChangeState());
+            default: 
                 break;
             
         }
@@ -104,13 +109,13 @@ public class Controller : MonoBehaviour, DataReceiver
         
         switch ( ((OperationData)currentData).operation )
         {
-            case OperationType.Noop: StartCoroutine(ChangeState());
+            case OperationType.Noop: 
                 break;
             
-            case OperationType.Loadn: StartCoroutine(ChangeState());
+            case OperationType.Loadn: 
                 break;
             
-            default: StartCoroutine(ChangeState());
+            default: 
                 break;
             
         }

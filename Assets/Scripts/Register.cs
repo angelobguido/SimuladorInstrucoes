@@ -24,13 +24,28 @@ public class Register : MonoBehaviour, DataReceiver
 {
     [SerializeField] private RegisterType type;
     private DataSender dataSender;
-    private int value;
+    private int currentValue;
+    private int nextValue;
     private bool isEnabled;
 
+    private void OnEnable()
+    {
+        Controller.OnSend += ReceiveControllerSignal;
+        Controller.OnReset += Reset;
+        Clock.OnClock += ReceiveClock;
+    }
+
+    private void OnDisable()
+    {
+        Controller.OnSend -= ReceiveControllerSignal;
+        Controller.OnReset -= Reset;
+        Clock.OnClock -= ReceiveClock;
+    }
+    
     private void Awake()
     {
         dataSender = GetComponent<DataSender>();
-        value = 0;
+        currentValue = 0;
         isEnabled = false;
     }
 
@@ -38,33 +53,26 @@ public class Register : MonoBehaviour, DataReceiver
     {
         InvokeRepeating("SendData", 0.1f, 0.5f);
     }
+
+    private void ReceiveClock()
+    {
+        currentValue = nextValue;
+    }
     
     public void ReceiveData(Data data, DataType dataType)
     {
         if(isEnabled == false) return;
         if (data is OperationData) return;
 
-        value = ((InfoData)data).info;
-        Debug.Log(value);
+        nextValue = ((InfoData)data).info;
+        Debug.Log(currentValue);
 
-    }
-
-    private void OnEnable()
-    {
-        Controller.OnSend += ReceiveControllerSignal;
-        Controller.OnReset += Reset;
-    }
-
-    private void OnDisable()
-    {
-        Controller.OnSend -= ReceiveControllerSignal;
-        Controller.OnReset -= Reset;
     }
 
     private void SendData()
     {
         InfoData data = ScriptableObject.CreateInstance<InfoData>();
-        data.info = value;
+        data.info = currentValue;
         dataSender.SendData(data);
     }
 
@@ -79,7 +87,7 @@ public class Register : MonoBehaviour, DataReceiver
                 if (((RegisterArgs)args).add)
                 {
                     Debug.Log("Add");
-                    value++;
+                    nextValue = currentValue + 1;
                 }
             }
         }
