@@ -25,11 +25,13 @@ public class Controller : MonoBehaviour, DataReceiver
     private void OnEnable()
     {
         Clock.OnClock += ReceiveClock;
+        Memory.OnProgramEnd += Stop;
     }
 
     private void OnDisable()
     {
         Clock.OnClock -= ReceiveClock;
+        Memory.OnProgramEnd -= Stop;
     }
 
     private void ReceiveClock()
@@ -51,6 +53,11 @@ public class Controller : MonoBehaviour, DataReceiver
 
         }
         
+    }
+
+    private void Stop()
+    {
+        nextState = State.None;
     }
 
     private void UpdateState()
