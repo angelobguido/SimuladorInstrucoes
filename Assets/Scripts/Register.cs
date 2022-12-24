@@ -23,6 +23,7 @@ public enum RegisterType
 public class Register : MonoBehaviour, DataReceiver
 {
     [SerializeField] private RegisterType type;
+    [SerializeField] private NumberDisplayController display;
     private DataSender dataSender;
     private int currentValue;
     private int nextValue;
@@ -57,6 +58,7 @@ public class Register : MonoBehaviour, DataReceiver
     private void ReceiveClock()
     {
         currentValue = nextValue;
+        display.ChangeNumber(currentValue);
     }
     
     public void ReceiveData(Data data, DataType dataType)

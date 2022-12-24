@@ -473,6 +473,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2871021391172147769, guid: 627051671d42a1a44bc72e66bdfdfbc4, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871021391172147769, guid: 627051671d42a1a44bc72e66bdfdfbc4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992078280440039079, guid: 627051671d42a1a44bc72e66bdfdfbc4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992078280440039079, guid: 627051671d42a1a44bc72e66bdfdfbc4, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
     - target: {fileID: 6476316869607289454, guid: 627051671d42a1a44bc72e66bdfdfbc4, type: 3}
       propertyPath: m_RootOrder
       value: 6
