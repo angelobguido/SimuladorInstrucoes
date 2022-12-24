@@ -19,7 +19,7 @@ public class Memory : MonoBehaviour, DataReceiver
 
     private void Start()
     {
-        InvokeRepeating("SendData", 0.1f, 1.2f);
+        InvokeRepeating("SendData", 0.1f, 0.1f);
     }
     
     private void SendData()

@@ -52,7 +52,7 @@ public class Register : MonoBehaviour, DataReceiver
 
     private void Start()
     {
-        InvokeRepeating("SendData", 0.1f, 0.5f);
+        InvokeRepeating("SendData", 0.1f, 0.1f);
     }
 
     private void ReceiveClock()
@@ -67,7 +67,6 @@ public class Register : MonoBehaviour, DataReceiver
         if (data is OperationData) return;
 
         nextValue = ((InfoData)data).info;
-        Debug.Log(currentValue);
 
     }
 
@@ -88,7 +87,6 @@ public class Register : MonoBehaviour, DataReceiver
                 isEnabled = ((RegisterArgs)args).load;
                 if (((RegisterArgs)args).add)
                 {
-                    Debug.Log("Add");
                     nextValue = currentValue + 1;
                 }
             }

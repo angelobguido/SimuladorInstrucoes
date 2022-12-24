@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4d2964e7db8964895e0aa8337a6c1d, type: 3}
   m_Name: OperationData 4
   m_EditorClassIdentifier: 
-  operation: 0
-  registers: 
+  operation: 1
+  registers: 07000000

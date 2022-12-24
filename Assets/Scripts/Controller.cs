@@ -19,7 +19,8 @@ public class Controller : MonoBehaviour, DataReceiver
     public static Action OnReset;
     private Data currentData;
     private bool loadIR = false;
-    private State currentState = State.None;
+    private State currentState;
+    private State nextState = State.Search;
 
     private void OnEnable()
     {
@@ -33,7 +34,8 @@ public class Controller : MonoBehaviour, DataReceiver
 
     private void ReceiveClock()
     {
-        ChangeState();
+        currentState = nextState;
+        UpdateState();
     }
 
     public void ReceiveData(Data data, DataType dataType)
@@ -45,33 +47,26 @@ public class Controller : MonoBehaviour, DataReceiver
         {
 
             currentData = data;
+            nextState = State.Translation;
 
         }
         
     }
 
-    private void ChangeState()
+    private void UpdateState()
     {
         switch (currentState)
         {
-            case State.None:
-                currentState = State.Search; 
-                StartSearch();
-                break;
-            
             case State.Search:
-                currentState = State.Translation;
-                StartTranslation();
+                StartSearch();
                 break;
             
             case State.Translation:
-                currentState = State.Execution;
-                StartExecution();
+                StartTranslation();
                 break;
             
             case State.Execution:
-                currentState = State.Search;
-                StartSearch();
+                StartExecution();
                 break;
         }
         
@@ -90,14 +85,17 @@ public class Controller : MonoBehaviour, DataReceiver
 
         switch ( ((OperationData)currentData).operation )
         {
-            case OperationType.Noop: 
+            case OperationType.Noop:
+                nextState = State.Search;
                 break;
             
             case OperationType.Loadn:
                 DoLoadnTranslation();
+                nextState = State.Search;
                 break;
             
             default: 
+                nextState = State.Search;
                 break;
             
         }
@@ -109,13 +107,9 @@ public class Controller : MonoBehaviour, DataReceiver
         
         switch ( ((OperationData)currentData).operation )
         {
-            case OperationType.Noop: 
-                break;
-            
-            case OperationType.Loadn: 
-                break;
             
             default: 
+                nextState = State.Search;
                 break;
             
         }
