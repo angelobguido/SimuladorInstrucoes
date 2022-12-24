@@ -104,6 +104,11 @@ public class Controller : MonoBehaviour, DataReceiver
                 nextState = State.Search;
                 break;
             
+            case OperationType.Load:
+                DoLoadTranslation();
+                nextState = State.Execution;
+                break;
+            
             default: 
                 nextState = State.Search;
                 break;
@@ -117,6 +122,10 @@ public class Controller : MonoBehaviour, DataReceiver
         
         switch ( ((OperationData)currentData).operation )
         {
+            case OperationType.Load:
+                DoLoadExecution();
+                nextState = State.Search;
+                break;
             
             default: 
                 nextState = State.Search;
@@ -129,6 +138,20 @@ public class Controller : MonoBehaviour, DataReceiver
     {
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
         OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
+        OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));
+        OnSend?.Invoke(new RegisterArgs( ((OperationData)currentData).registers[0] , true, false));
+    }
+    
+    private void DoLoadTranslation()
+    {
+        OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
+        OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
+        OnSend?.Invoke(new RegisterArgs( RegisterType.MAR , true, false));
+    }
+    
+    private void DoLoadExecution()
+    {
+        OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.MAR));
         OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));
         OnSend?.Invoke(new RegisterArgs( ((OperationData)currentData).registers[0] , true, false));
     }
