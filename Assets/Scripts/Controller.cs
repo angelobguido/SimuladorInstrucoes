@@ -16,6 +16,7 @@ public class Controller : MonoBehaviour, DataReceiver
 {
 
     public static Action<ProcessorArgs> OnSend;
+    public static Action OnReset;
     private Data currentData;
     private bool loadIR = false;
     private State currentState = State.None;
@@ -118,6 +119,7 @@ public class Controller : MonoBehaviour, DataReceiver
     private void DoLoadnTranslation()
     {
         Debug.Log("LoadN");
+        OnReset?.Invoke();
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
         OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
         OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));

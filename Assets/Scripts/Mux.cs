@@ -28,11 +28,13 @@ public class Mux : MonoBehaviour, DataReceiver
     private void OnEnable()
     {
         Controller.OnSend += ReceiveControllerSignal;
+        Controller.OnReset += Reset;
     }
 
     private void OnDisable()
     {
         Controller.OnSend -= ReceiveControllerSignal;
+        Controller.OnReset -= Reset;
     }
     
     public void ReceiveData(Data data, DataType dataType)

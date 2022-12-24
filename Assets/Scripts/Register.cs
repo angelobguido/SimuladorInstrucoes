@@ -52,11 +52,13 @@ public class Register : MonoBehaviour, DataReceiver
     private void OnEnable()
     {
         Controller.OnSend += ReceiveControllerSignal;
+        Controller.OnReset += Reset;
     }
 
     private void OnDisable()
     {
         Controller.OnSend -= ReceiveControllerSignal;
+        Controller.OnReset -= Reset;
     }
 
     private void SendData()
