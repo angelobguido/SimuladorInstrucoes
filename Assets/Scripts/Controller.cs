@@ -62,6 +62,8 @@ public class Controller : MonoBehaviour, DataReceiver
 
     private void UpdateState()
     {
+        OnReset?.Invoke();
+        
         switch (currentState)
         {
             case State.Search:
@@ -81,6 +83,7 @@ public class Controller : MonoBehaviour, DataReceiver
     
     private void StartSearch()
     {
+        
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
         OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
         loadIR = true;
@@ -89,10 +92,10 @@ public class Controller : MonoBehaviour, DataReceiver
     private void StartTranslation()
     {
         loadIR = false;
-
+        
         switch ( ((OperationData)currentData).operation )
         {
-            case OperationType.Noop:
+            case OperationType.Noop: 
                 nextState = State.Search;
                 break;
             
@@ -124,8 +127,6 @@ public class Controller : MonoBehaviour, DataReceiver
 
     private void DoLoadnTranslation()
     {
-        Debug.Log("LoadN");
-        OnReset?.Invoke();
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.PC));
         OnSend?.Invoke(new RegisterArgs(RegisterType.PC, false, true));
         OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));

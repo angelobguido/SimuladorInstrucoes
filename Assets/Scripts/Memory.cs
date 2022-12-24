@@ -56,8 +56,15 @@ public class Memory : MonoBehaviour, DataReceiver
             Debug.Log("End of program");
             OnProgramEnd?.Invoke();
             return;
-        }        
+        }
         
+        if (dataList[currentIndex] == null)
+        {
+            Data dataToSend = ScriptableObject.CreateInstance<OperationData>();
+            ((OperationData)dataToSend).operation = OperationType.Noop;
+            dataList[currentIndex] = dataToSend;
+        }
+
         dataSender.SendData(dataList[currentIndex]);
     }
 

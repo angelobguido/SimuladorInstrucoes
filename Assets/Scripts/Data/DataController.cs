@@ -3,6 +3,8 @@ using UnityEngine;
 public enum DataType
 {
     PC,
+    MAR,
+    SP,
     DATA_OUT,
     Nothing
 }
