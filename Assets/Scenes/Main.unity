@@ -578,6 +578,10 @@ PrefabInstance:
       value: Mux1
       objectReference: {fileID: 0}
     - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: typeToSend
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
       propertyPath: pathsToSend.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -892,7 +896,7 @@ PrefabInstance:
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 860c9e2bcac0617448ca950a2f4e4794, type: 2}
+      objectReference: {fileID: 11400000, guid: df8f866187531d04ebb3d78212959259, type: 2}
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[1]
       value: 
@@ -920,11 +924,11 @@ PrefabInstance:
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: e627bb8125c675b4e997093f9b8a04cf, type: 2}
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[8]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: e4d7dbece5d03b346974656d00a8635c, type: 2}
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[9]
       value: 
@@ -992,7 +996,7 @@ PrefabInstance:
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[25]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: ba9c0e0fea2413b479a82c13b330808c, type: 2}
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[26]
       value: 
@@ -1004,6 +1008,10 @@ PrefabInstance:
     - target: {fileID: 3480981249375858147, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: dataList.Array.data[28]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
+      propertyPath: typeToSend
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8981388437605468871, guid: ff88ce998a2a94b4da4ba4c46f94db1b, type: 3}
       propertyPath: pathsToSend.Array.size
@@ -1831,6 +1839,10 @@ PrefabInstance:
     - target: {fileID: 858501966658540115, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
       propertyPath: m_Name
       value: Mux2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
+      propertyPath: typeToSend
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1368853651469189023, guid: 0cb8c9e59a659dd4a9fd76f8501ba51c, type: 3}
       propertyPath: pathsToSend.Array.size
