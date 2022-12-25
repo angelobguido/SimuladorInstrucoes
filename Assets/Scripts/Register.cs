@@ -52,7 +52,7 @@ public class Register : MonoBehaviour, DataReceiver
 
     private void Start()
     {
-        InvokeRepeating("SendData", 0.1f, 0.1f);
+        InvokeRepeating("SendData", 0.1f, 0.5f);
     }
 
     private void ReceiveClock()

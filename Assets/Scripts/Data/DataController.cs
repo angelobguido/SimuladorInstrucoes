@@ -32,7 +32,7 @@ public class DataController : MonoBehaviour
 
         if (data is InfoData)
         {
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponentInChildren<DataColor>().ChangeColor(Color.red);
         }
     }
 
