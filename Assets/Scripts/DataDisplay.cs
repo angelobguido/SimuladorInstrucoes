@@ -34,7 +34,7 @@ public class DataDisplay : MonoBehaviour
                 
                 case OperationType.Add:
                     text.text = "ADD" + " " + GetStringFromRegisterType(op.registers[0]) + " " +
-                                GetStringFromRegisterType(op.registers[1]);
+                                GetStringFromRegisterType(op.registers[1]) + " " + GetStringFromRegisterType(op.registers[2]);
                     break;
                 
                 default:

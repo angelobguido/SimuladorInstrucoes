@@ -109,6 +109,11 @@ public class Controller : MonoBehaviour, DataReceiver
                 nextState = State.Execution;
                 break;
             
+            case OperationType.Add:
+                DoAddTranslation();
+                nextState = State.Search;
+                break;
+            
             default: 
                 nextState = State.Search;
                 break;
@@ -153,6 +158,15 @@ public class Controller : MonoBehaviour, DataReceiver
     {
         OnSend?.Invoke(new MuxArgs(MuxType.M1, DataType.MAR));
         OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.DATA_OUT));
+        OnSend?.Invoke(new RegisterArgs( ((OperationData)currentData).registers[0] , true, false));
+    }
+
+    private void DoAddTranslation()
+    {
+        OnSend?.Invoke(new MuxArgs(MuxType.M3, ((OperationData)currentData).registers[1]));
+        OnSend?.Invoke(new MuxArgs(MuxType.M4, ((OperationData)currentData).registers[2]));
+        //select ula operation, in this case will aways be addition
+        OnSend?.Invoke(new MuxArgs(MuxType.M2, DataType.ULA));
         OnSend?.Invoke(new RegisterArgs( ((OperationData)currentData).registers[0] , true, false));
     }
 }

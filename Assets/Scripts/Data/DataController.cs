@@ -6,6 +6,15 @@ public enum DataType
     MAR,
     SP,
     DATA_OUT,
+    ULA,
+    R0,
+    R1,
+    R2,
+    R3,
+    R4,
+    R5,
+    R6,
+    R7,
     Nothing
 }
 public class DataController : MonoBehaviour
